@@ -1,45 +1,27 @@
 
+14
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta content="origin" name="referrer">
-    <title>Rate limit &middot; GitHub</title>
-    <meta name="viewport" content="width=device-width">
-    <style type="text/css" media="screen">
-      body {
-        background-color: #f6f8fa;
-        color: rgba(0, 0, 0, 0.5);
-        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-        font-size: 14px;
-        line-height: 1.5;
-      }
-      .c { margin: 50px auto; max-width: 600px; text-align: center; padding: 0 24px; }
-      a { text-decoration: none; }
-      a:hover { text-decoration: underline; }
-      h1 { color: #24292e; line-height: 60px; font-size: 48px; font-weight: 300; margin: 0px; }
-      p { margin: 20px 0 40px; }
-      #s { margin-top: 35px; }
-      #s a {
-        color: #666666;
-        font-weight: 200;
-        font-size: 14px;
-        margin: 0 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="c">
-      <h1>Access has been restricted</h1>
-      <p>You have triggered a rate limit.<br><br>
-         Please wait a few minutes before you try again;<br>
-         in some cases this may take up to an hour.
-      </p>
-      <div id="s">
-        <a href="https://support.github.com">Contact Support</a> &mdash;
-        <a href="https://githubstatus.com">GitHub Status</a> &mdash;
-        <a href="https://twitter.com/githubstatus">@githubstatus</a>
-      </div>
-    </div>
-  </body>
+<head>
+    <title>新增使用者</title>
+</head>
+<body>
+<?php     // 關閉錯誤報告
+error_reporting(0);  // 啟動 session
+session_start();  // 檢查使用者是否已登入
+if (!$_SESSION["id"]) {
+    echo "請登入帳號";  // 三秒後跳轉到登入頁面
+    echo "<meta http-equiv='REFRESH' content='3; url=2.login.html'>";
+} else {   // 如果已登入，顯示新增使用者的表單
+    echo "
+    <form action='15.user_add.php' method='post'>
+        帳號：<input type='text' name='id'><br>
+        密碼：<input type='password' name='pwd'><p></p>
+        <input type='submit' value='新增'>
+        <input type='reset' value='清除'>
+    </form>
+    ";
+}
+?>
+</body>
 </html>
-
-
